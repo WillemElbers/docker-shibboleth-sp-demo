@@ -74,8 +74,12 @@ RUN mkdir -p /var/log/supervisord
 # && wget --no-check-certificate -O /data/metadata/sp-metadata.xml https://localhost/Shibboleth.sso/Metadata \
 # && cp /opt/shibboleth-idp/metadata/idp-metadata.xml /data/metadata/idp-metadata.xml
 
+ADD download-idp-metadata.sh /opt/download-metadata.sh
+RUN chmod u+x /opt/download-metadata.sh
+
 COPY clarin-aai-debugger-1.1.war ${CATALINA_BASE}/webapps/debugger.war
 
+VOLUME ["/data/metadata"]
 EXPOSE 80 443 8009 8080
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
