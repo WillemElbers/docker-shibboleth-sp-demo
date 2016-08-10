@@ -4,7 +4,7 @@
     xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"    
     xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata"
     clockSkew="180">
-
+<!--
     <RequestMapper type="XML">
        <RequestMap>
          <Host name="localhost"
@@ -15,7 +15,7 @@
          </Host>
        </RequestMap>
      </RequestMapper>
-
+-->
     <!--
     By default, in-memory StorageService, ReplayCache, ArtifactMap, and SessionCache
     are used. See example-shibboleth2.xml for samples of explicitly configuring them.
@@ -32,9 +32,11 @@
 
     <!-- The ApplicationDefaults element is where most of Shibboleth's SAML bits are defined. -->
     <ApplicationDefaults entityID="https://localhost/sp/shibboleth"
-                         REMOTE_USER="eppn persistent-id targeted-id"
+                         REMOTE_USER="eppn persistent-id targeted-id">
+        <!--
                          sessionHook="/aa-statistics"
                          metadataAttributePrefix="AJP_" >
+                         -->
     <!--
     <ApplicationDefaults entityID="https://localhost/sp/shibboleth"
                          REMOTE_USER="eppn persistent-id targeted-id"
@@ -67,7 +69,7 @@
             (Set discoveryProtocol to "WAYF" for legacy Shibboleth WAYF support.)
             You can also override entityID on /Login query string, or in RequestMap/htaccess.
             -->
-            <SSO entityID="https://localhost/idp/shibboleth" discoveryProtocol="SAMLDS">
+            <SSO entityID="http://example-saml-idp.org" discoveryProtocol="SAMLDS">
               SAML2 SAML1
             </SSO>
 
