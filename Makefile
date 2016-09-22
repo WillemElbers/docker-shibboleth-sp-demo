@@ -1,7 +1,8 @@
-
-IMAGE_NAME=shibboleth/sp-demo
-IMAGE_VERSION=1.0.0
+VERSION="1.0.2"
+NAME="sp-demo"
+REPOSITORY="shibboleth"
+IMAGE_NAME="${REPOSITORY}/${NAME}:${VERSION}"
 
 build:
-	@echo "Building docker image: ${IMAGE_NAME}:${IMAGE_VERSION}"
-	@docker build -t ${IMAGE_NAME}:${IMAGE_VERSION} .
+	@echo "Building docker image: ${IMAGE_NAME}"
+	@docker build -t ${IMAGE_NAME} .

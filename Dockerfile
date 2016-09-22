@@ -59,6 +59,8 @@ RUN mkdir -p /etc/apache2/certs \
  && a2dissite 000-default \
  && a2ensite default
 
+COPY var/www/html /var/www/html
+
 #
 # Supervisor
 #
